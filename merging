@@ -1,0 +1,11 @@
+import numpy as np
+import pandas as pd
+
+df1 = pd.read_csv('Korean_Citation_2021.csv')
+
+# df1.set_index('ID', inplace=True)
+df2 = pd.read_csv('Korean_Citation_2022.csv')
+df3 = pd.concat([df1, df2])
+df3.index = np.arange(1, len(df3) + 1)
+df3.index.name = 'Manual ID'
+print(df3.to_csv('1.csv'))
