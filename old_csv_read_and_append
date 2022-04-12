@@ -1,0 +1,12 @@
+                        if old_df is None:
+                            journal_data.append(dictionary)
+                            df = pd.DataFrame.from_records(journal_data)
+                            df.index = np.arange(1, len(df) + 1)
+                            df.index.name = 'Manual ID'
+                            df.to_csv(f'{JOURNAL_NAME}.csv', index=False) # Take out Index = False to have manual ID column
+                        else:
+                            new_df = pd.DataFrame(journal_data)
+                            merged_df = pd.concat([old_df, new_df], ignore_index=True)
+                            merged_df.index = np.arange(1, len(merged_df) + 1)
+                            merged_df.index.name = 'Manual ID'
+                            merged_df.to_csv(f'{JOURNAL_NAME}.csv', index=False)
